@@ -35,6 +35,8 @@ dependencies {
     implementation "org.mozilla.components:browser-toolbar:$android_components_version"
     implementation "org.mozilla.components:concept-engine:$android_components_version"
     implementation "org.mozilla.components:browser-engine-system:$android_components_version"
+    implementation "org.mozilla.components:feature-toolbar:$android_components_version"
+    implementation "org.mozilla.components:feature-session:$android_components_version"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
