@@ -3,16 +3,20 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".MainActivity">
+              android:orientation="vertical">
 
     <mozilla.components.browser.toolbar.BrowserToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#aaaaaa"/>
+            android:background="#aaaaaa" />
+
+    <mozilla.components.concept.engine.EngineView
+            android:id="@+id/engineView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
 </LinearLayout>

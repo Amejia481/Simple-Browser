@@ -1,7 +1,7 @@
 # Simple Browser
-## Step 1 adding toolbar
+## Step 2 Web engine
 
 Simple Browser to illustrate this [blog post](https://medium.com/p/562250a2291a/)
 
 
-<img src="toolbar.gif" height="600em" />
+<img src="images/web_engine.gif" height="600em" />
