@@ -1,6 +1,6 @@
 # Simple Browser
-## Step 3 Toolbar + Web Engine = Feature
+## Step 4 Navigation buttons.
 
 Simple Browser to illustrate this [blog post](https://medium.com/p/562250a2291a/)
 
-<img src="images/toolbar_web_engine.gif" height="600em" />
+<img src="images/navigation-actions.gif" height="600em" />
