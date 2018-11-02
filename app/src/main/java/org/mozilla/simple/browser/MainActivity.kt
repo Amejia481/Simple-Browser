@@ -12,10 +12,13 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import mozilla.components.browser.engine.system.SystemEngine
 import mozilla.components.concept.engine.EngineView
+import mozilla.components.concept.engine.Engine
 
 class MainActivity : AppCompatActivity() {
 
-    private val engine = SystemEngine(this)
+    private val engine : Engine by lazy{
+        SystemEngine(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
