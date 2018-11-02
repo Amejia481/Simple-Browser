@@ -15,6 +15,7 @@ import mozilla.components.browser.menu.BrowserMenuBuilder
 import mozilla.components.browser.menu.item.BrowserMenuItemToolbar
 import mozilla.components.browser.session.Session
 import mozilla.components.browser.session.SessionManager
+import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.engine.EngineView
 import mozilla.components.feature.session.SessionFeature
 import mozilla.components.feature.session.SessionUseCases
@@ -22,16 +23,21 @@ import mozilla.components.feature.toolbar.ToolbarFeature
 
 class MainActivity : AppCompatActivity() {
 
-    private val engine = SystemEngine(this)
+    private val engine: Engine by lazy {
+        SystemEngine(this)
+    }
+
     private lateinit var toolbarFeature: ToolbarFeature
     private lateinit var sessionFeature: SessionFeature
-    private val sessionManager = SessionManager(engine)
-    private val sessionUseCases = SessionUseCases(sessionManager)
+    private lateinit var sessionManager: SessionManager
+    private lateinit var sessionUseCases: SessionUseCases
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        sessionManager = SessionManager(engine)
+        sessionUseCases = SessionUseCases(sessionManager)
         toolbar.setMenuBuilder(getBrowserMenuBuilder())
 
         sessionFeature = SessionFeature(
@@ -76,30 +82,34 @@ class MainActivity : AppCompatActivity() {
     private fun getBrowserMenuItemToolbar(): BrowserMenuItemToolbar {
 
         val back = BrowserMenuItemToolbar.Button(
-                mozilla.components.ui.icons.R.drawable.mozac_ic_back,
-                iconTintColorResource = R.color.photonBlue90,
-                contentDescription = "Back") {
+            mozilla.components.ui.icons.R.drawable.mozac_ic_back,
+            iconTintColorResource = R.color.photonBlue90,
+            contentDescription = "Back"
+        ) {
             sessionUseCases.goBack.invoke()
         }
 
         val forward = BrowserMenuItemToolbar.Button(
-                mozilla.components.ui.icons.R.drawable.mozac_ic_forward,
-                iconTintColorResource = R.color.photonBlue90,
-                contentDescription = "Forward") {
+            mozilla.components.ui.icons.R.drawable.mozac_ic_forward,
+            iconTintColorResource = R.color.photonBlue90,
+            contentDescription = "Forward"
+        ) {
             sessionUseCases.goForward.invoke()
         }
 
         val refresh = BrowserMenuItemToolbar.Button(
-                mozilla.components.ui.icons.R.drawable.mozac_ic_refresh,
-                iconTintColorResource = R.color.photonBlue90,
-                contentDescription = "Refresh") {
+            mozilla.components.ui.icons.R.drawable.mozac_ic_refresh,
+            iconTintColorResource = R.color.photonBlue90,
+            contentDescription = "Refresh"
+        ) {
             sessionUseCases.reload.invoke()
         }
 
         val stop = BrowserMenuItemToolbar.Button(
-                mozilla.components.ui.icons.R.drawable.mozac_ic_stop,
-                iconTintColorResource = R.color.photonBlue90,
-                contentDescription = "Stop") {
+            mozilla.components.ui.icons.R.drawable.mozac_ic_stop,
+            iconTintColorResource = R.color.photonBlue90,
+            contentDescription = "Stop"
+        ) {
             sessionUseCases.stopLoading.invoke()
         }
 
