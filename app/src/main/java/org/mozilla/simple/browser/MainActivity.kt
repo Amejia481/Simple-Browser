@@ -14,22 +14,28 @@ import mozilla.components.browser.engine.system.SystemEngine
 import mozilla.components.browser.session.Session
 import mozilla.components.browser.session.SessionManager
 import mozilla.components.concept.engine.EngineView
+import mozilla.components.concept.engine.Engine
 import mozilla.components.feature.session.SessionFeature
 import mozilla.components.feature.session.SessionUseCases
 import mozilla.components.feature.toolbar.ToolbarFeature
 
 class MainActivity : AppCompatActivity() {
 
-    private val engine = SystemEngine(this)
+    private val engine: Engine by lazy {
+        SystemEngine(this)
+    }
 
     private lateinit var toolbarFeature: ToolbarFeature
     private lateinit var sessionFeature: SessionFeature
-    private val sessionManager = SessionManager(engine)
-    private val sessionUseCases = SessionUseCases(sessionManager)
+    private lateinit var sessionManager: SessionManager
+    private lateinit var sessionUseCases: SessionUseCases
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        sessionManager = SessionManager(engine)
+        sessionUseCases = SessionUseCases(sessionManager)
 
         sessionFeature = SessionFeature(
             sessionManager,
