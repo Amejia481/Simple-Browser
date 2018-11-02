@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
-import mozilla.components.browser.engine.system.SystemEngine
+import mozilla.components.browser.engine.gecko.GeckoEngine
 import mozilla.components.browser.session.Session
 import mozilla.components.browser.session.SessionManager
 import mozilla.components.concept.engine.EngineView
@@ -22,7 +22,7 @@ import mozilla.components.feature.toolbar.ToolbarFeature
 class MainActivity : AppCompatActivity() {
 
     private val engine: Engine by lazy {
-        SystemEngine(this)
+        GeckoEngine(this)
     }
 
     private lateinit var toolbarFeature: ToolbarFeature
